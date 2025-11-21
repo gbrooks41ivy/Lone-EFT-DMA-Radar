@@ -36,24 +36,27 @@ namespace LoneEftDmaRadar.Tarkov.Unity
         {
             public const uint GameObjectManager = 0x1A1F0B8;
 
+            // GameObject
             public const uint GameObject_ObjectClassOffset = 0x80;
             public const uint GameObject_ComponentsOffset = 0x50;
             public const uint GameObject_NameOffset = 0x80;
 
+            // Component
             public const uint Component_ObjectClassOffset = 0x38;
             public const uint Component_GameObjectOffset = 0x50;
 
-            public const uint TransformAccess_IndexOffset = 0x80;
-            public const uint TransformAccess_HierarchyOffset = 0x78;
+            // Transform (used for player/world position resolution)
+            public const uint TransformAccess_IndexOffset = 0x80;      // int index into hierarchy arrays
+            public const uint TransformAccess_HierarchyOffset = 0x78;  // pointer to TransformHierarchy
 
-            public const uint Hierarchy_VerticesOffset = 0x80;
-            public const uint Hierarchy_IndicesOffset = 0x50;
+            public const uint Hierarchy_VerticesOffset = 0x80; // array of TrsX (t=pos, q=rot, s=scale)
+            public const uint Hierarchy_IndicesOffset = 0x50;  // array of parent indices matching Vertices
 
             public static readonly uint[] GameWorldChain =
             [
                 GameObject_ComponentsOffset,        // 0x48
                 0x18,                               // ??
-                Component_ObjectClassOffset     // 0x28
+                Component_ObjectClassOffset         // 0x28
             ];
 
             public static readonly uint[] TransformChain =
@@ -61,8 +64,8 @@ namespace LoneEftDmaRadar.Tarkov.Unity
                 ObjectClass.MonoBehaviourOffset,    // 0x10
                 Component_GameObjectOffset,     // 0x48
                 GameObject_ComponentsOffset,        // 0x48
-                0x8,                                // ?? 
-                Component_ObjectClassOffset,    // 0x28
+                0x8,                                // ??
+                Component_ObjectClassOffset,        // 0x28
                 0x10                                // Transform Internal
             ];
         }

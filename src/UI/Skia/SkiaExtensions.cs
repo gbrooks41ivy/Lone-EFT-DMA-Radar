@@ -148,6 +148,7 @@ namespace LoneEftDmaRadar.UI.Skia
 
         /// <summary>
         /// Convert Unity Position (X,Y,Z) to an unzoomed Map Position..
+        /// Unity's ground plane uses X/Z; we keep Y for vertical height elsewhere, and map X/Z onto the SVG plane here.
         /// </summary>
         /// <param name="vector">Unity Vector3</param>
         /// <param name="map">Current Map</param>

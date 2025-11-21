@@ -34,14 +34,14 @@ namespace LoneEftDmaRadar.Tarkov.Unity
     {
         public readonly struct UnityOffsets
         {
-            public const uint GameObjectManager = 0x1A1F0B8;
+            public const uint GameObjectManager = 0x1AEC030;
 
             public const uint GameObject_ObjectClassOffset = 0x80;
-            public const uint GameObject_ComponentsOffset = 0x50;
+            public const uint GameObject_ComponentsOffset = 0xB0;
             public const uint GameObject_NameOffset = 0x80;
 
             public const uint Component_ObjectClassOffset = 0x38;
-            public const uint Component_GameObjectOffset = 0x50;
+            public const uint Component_GameObjectOffset = 0x38;
 
             public const uint TransformAccess_IndexOffset = 0x80;
             public const uint TransformAccess_HierarchyOffset = 0x78;
@@ -51,18 +51,18 @@ namespace LoneEftDmaRadar.Tarkov.Unity
 
             public static readonly uint[] GameWorldChain =
             [
-                GameObject_ComponentsOffset,        // 0x48
+                GameObject_ComponentsOffset,        // 0xB0
                 0x18,                               // ??
-                Component_ObjectClassOffset     // 0x28
+                Component_ObjectClassOffset     // 0x38
             ];
 
             public static readonly uint[] TransformChain =
             [
                 ObjectClass.MonoBehaviourOffset,    // 0x10
-                Component_GameObjectOffset,     // 0x48
-                GameObject_ComponentsOffset,        // 0x48
-                0x8,                                // ?? 
-                Component_ObjectClassOffset,    // 0x28
+                Component_GameObjectOffset,     // 0x38
+                GameObject_ComponentsOffset,        // 0xB0
+                0x8,                                // ??
+                Component_ObjectClassOffset,    // 0x38
                 0x10                                // Transform Internal
             ];
         }
